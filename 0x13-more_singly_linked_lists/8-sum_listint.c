@@ -1,17 +1,15 @@
 #include "lists.h"
 
 /**
-* sum_listint - Sums all the data(n) of the lists.
-* @head: A pointer to the head of the lists.
-*
-* Return: The sum of the data(n)
-* else - NULL, if the list is empty.
-*/
-
-
-int sum_listint(listint_t *head);
+ * sum_listint - Calculates the sum of all the
+ *               data (n) of the list.
+ * @head: A pointer to the head of the list.
+ *
+ * Return: If the list is empty - NULL
+ *    else - the sum of all the data.
+ */
+int sum_listint(listint_t *head)
 {
-
 	int sum = 0;
 
 	while (head)
