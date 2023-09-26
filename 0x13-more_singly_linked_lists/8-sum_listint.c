@@ -13,9 +13,7 @@ int sum_listint(listint_t *head);
 {
 
 	int sum = 0;
-	listint_t *nodeA;
-
-	*nodeA = head;
+	listint_t *nodeA = head;
 
 	while (nodeA != NULL)
 	{
