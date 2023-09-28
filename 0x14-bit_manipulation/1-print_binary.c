@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "main.h"
 
 /**
@@ -9,21 +8,21 @@
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int data = 1;
-	int size = sizeof(unsigned long int) * 8;
-	int i;
+	unsigned long int data;
+	int i, size = 0;
 
-	data <<= (size - 1);
-
-	for (i = 0; i < size; i++)
+	for (i = 63; i >= 0; i--)
 	{
-		if ((n & data) == 0)
-			_putchar('0');
-		else
+		data = n >> i;
+
+		if (data & 1)
+		{
 			_putchar('1');
-
-		data >>= 1;
+			size++;
+		}
+		else if (size)
+			_putchar('0');
 	}
-
-	_putchar('\n');
+	if  (!size)
+		_putchar('0');
 }
