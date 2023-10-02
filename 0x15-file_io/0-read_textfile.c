@@ -16,31 +16,42 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int fp
-	ssize_t ayor, ayow;
-	char *buffer;
+	int df;
+	ssize_t nayo, dav;
+	char *buf;
 
 	if (filename == NULL)
 		return (0);
-	fp = open(filename, O_RDONLY);
-	if (fp == -1)
+
+	df = open(filename, O_RDONLY);
+	if (df == -1)
 		return (0);
-	buffer = malloc(sizeof(char) * letters);
-	if (buffer == NULL)
+
+	buf = malloc(sizeof(char) * letters);
+	if (buf == NULL)
 	{
-		close(fp);
+		close(df);
 		return (0);
 	}
-	ayor = read(fp, buffer, letters);
-	close(fp);
-	if (ayor == -1)
+
+	nayo = read(df, buf, letters);
+	if (nayo == -1)
 	{
-		free(buffer);
+		free(buf);
+		close(df);
 		return (0);
 	}
-	ayow = write(STDOUT_FILENO, buffer, ayor);
-	free(buffer);
-	if (ayor != ayow)
+
+	dav = write(STDOUT_FILENO, buf, nayo);
+	if (dav == -1 || dav != nayo)
+	{
+		free(buf);
+		close(df);
 		return (0);
-	return (ayow);
+	}
+
+	free(buf);
+	close(df);
+
+	return (dav);
 }
